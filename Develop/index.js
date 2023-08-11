@@ -27,10 +27,17 @@ inquirer
             message: 'What did you learn?',
             name: 'learning',
         },
-    ]);
+    ])
+    .then(answers => {
+        console.log(answers);
+    })
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// TODO: Create a function to write REA'DME file
+function writeToFile(file, data) {
+    
+    fs.writeFile(file, data)
+
+}
 
 // TODO: Create a function to initialize app
 function init() {}
