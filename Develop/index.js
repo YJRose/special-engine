@@ -4,7 +4,7 @@ const { writeFile } = require('./utils/generateMarkdown.js').promises;
 
 // TODO: Create an array of questions for user input
 const questions = ({motivation, reasons, solvedproblems, learning}) => {
-    `# README file Generater
+    `# README file Generator
      ## Motivation
      ${motivation}.
      ## Reasons
