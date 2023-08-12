@@ -1,12 +1,22 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const fs = require('fs');
+const { writeFile } = require('./utils/generateMarkdown.js').promises;
 
 // TODO: Create an array of questions for user input
-const questions = ["motivation", "reasons", "problem-solving", "learning"];
+const questions = ({motivation, reasons, solvedproblems, learning}) => {
+    `# README file Generater
+     ## Motivation
+     ${motivation}.
+     ## Reasons
+     ${reasons}.
+     ## Purpose
+     ${solvedproblems}.
+     ## Growth
+     ${learning}.
 
-inquirer
-    .prompt([
+    `
+
+    return inquirer.prompt([
         {
             type: 'input',
             message: 'What was your motivation?',
@@ -20,7 +30,7 @@ inquirer
         {
             type: 'input',
             message: 'What problem does it solve?',
-            name: 'problem-solving',
+            name: 'solvedproblems',
         },
         {
             type: 'input',
@@ -28,19 +38,25 @@ inquirer
             name: 'learning',
         },
     ])
-    .then(answers => {
-        console.log(answers);
-    })
+};
 
 // TODO: Create a function to write REA'DME file
-function writeToFile(file, data) {
-    
-    fs.writeFile(file, data)
+function writeToFile() {
 
-}
+    const READMEContent = generateMD(answers);
+    fs.writeFile(writeFile, READMEContent, (err) =>
+    err ? console.log(err) : console.log('Successfully created README.md!')
+    )
+
+};
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    questions()
+        .then((answers) => writeFile('README.md', generateMD(answers)))
+        .then(() => console.log('Successfully wrote to README.md'))
+        .catch((err) => console.error(err));
+    }
 
 // Function call to initialize app
 init();
