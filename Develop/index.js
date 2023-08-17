@@ -3,66 +3,65 @@ const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 const fs = require("fs");
 // TODO: Create an array of questions for user input
-/*const questions = ({motivation, reasons, solvedproblems, learning}) => {
-    `# README file Generator
-     ## Motivation
-     ${motivation}.
-     ## Reasons
-     ${reasons}.
-     ## Purpose
-     ${solvedproblems}.
-     ## Growth
-     ${learning}.
-
-    `*/
 
   const questions = [
         {
             type: 'input',
-            message: 'What was your title?',
+            message: 'What is your project title?',
             name: 'title',  
         },
         {
             type: 'input',
-            message: 'Why did you build this project?',
+            message: 'What is the description of this project?',
             name: 'description',
         },
-        /*{
+        {   
             type: 'input',
-            message: 'What problem does it solve?',
-            name: 'solvedproblems',
+            message: 'What the contents of this project?',
+            name: 'contents',
         },
         {
             type: 'input',
-            message: 'What did you learn?',
-            name: 'learning',
-        },*/
+            message: 'What is the instruction of installation?',
+            name: 'installation',
+        },
+        {
+            type: 'input',
+            message: 'What is the usage of installation?',
+            name: 'usage',
+        },
+        {
+            type: 'input',
+            message: 'What does this project contribute to?',
+            name: 'contributing',
+        },
         {
             type: "list",
             message: "Please select a license",
             choices: ["MIT", "Apache"],
             name:"license"
-        }
+        },
+        {
+            type: 'input',
+            message: 'What is your GitHub username?',
+            name: 'githubusername',
+        },
+        {
+            type: 'input',
+            message: 'What is your email address for questions?',
+            name: 'email',
+        },
     ];
 
 // TODO: Create a function to write REA'DME file
 function writeToFile(data) {
 
-
-    return fs.writeFileSync("TEST.md", data);
-    /*const READMEContent = generateMD(answers);
-    fs.writeFile(writeFile, READMEContent, (err) =>
-    err ? console.log(err) : console.log('Successfully created README.md!')
-    ) */
+    return fs.writeFileSync("README_.md", data);
 
 };
 
 // TODO: Create a function to initialize app
 function init() {
-    /*questions()
-        .then((answers) => writeFile('README.md', generateMD(answers)))
-        .then(() => console.log('Successfully wrote to README.md'))
-        .catch((err) => console.error(err));*/
 
         inquirer.prompt(questions).then((answer) => {
             writeToFile(generateMarkdown({ ...answer}));
