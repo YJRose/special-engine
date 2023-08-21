@@ -33,4 +33,4 @@ THEN I am taken to the corresponding section of the README
 ### Vedio walkthrough
 (https://drive.google.com/file/d/1L8BQW4XAFOHjXGYgoFTs3kimuNn_AReX/view)
 
-### get help from tutor-Mansi Patel on getting application to work properly
+### got help from tutor-Mansi Patel on getting application to work properly
